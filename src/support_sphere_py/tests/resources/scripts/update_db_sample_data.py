@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 def populate_user_details():
-    file_path = Path("./src/support_sphere_py/src/tests/resources/data/sample_data.csv")
+    file_path = Path("./src/support_sphere_py/tests/resources/data/sample_data.csv")
     with file_path.open(mode='r', newline='') as file:
         csv_reader = csv.DictReader(file)
 
@@ -21,7 +21,7 @@ def populate_user_details():
             if bool(eval(row['has_profile'])):
 
                 # Create a user
-                user = User(email=row['email'], phone=row['phone'])
+                user = User(email=row['email'], phone=row['phone'], encrypted_password=row['username'])
                 UserRepository.add(user)
                 user = UserRepository.find_by_email(row['email'])
 
