@@ -12,6 +12,9 @@ logger = logging.getLogger(__name__)
 
 
 def populate_user_details():
+    """
+        This utility function populates your local supabase database tables with sample data entries.
+    """
     file_path = Path("./src/support_sphere_py/tests/resources/data/sample_data.csv")
     with file_path.open(mode='r', newline='') as file:
         csv_reader = csv.DictReader(file)
@@ -20,7 +23,7 @@ def populate_user_details():
             user_profile = None
             if bool(eval(row['has_profile'])):
 
-                # Create a user
+                # Create a user with encrypted_password as its username (in-plain text - ONLY FOR LOCAL TESTING)
                 user = User(email=row['email'], phone=row['phone'], encrypted_password=row['username'])
                 UserRepository.add(user)
                 user = UserRepository.find_by_email(row['email'])
