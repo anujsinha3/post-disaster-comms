@@ -85,6 +85,15 @@ depends-on = ["install-k3d", "k3d-delete-cluster"]
 [feature.backend.tasks.k3d-delete-cluster]
 cmd = "k3d cluster delete pdc-cluster"
 
+# Fast API tasks
+[feature.backend.tasks.run-fast-api-server-run]
+cmd = "fastapi dev ./src/support_sphere_py/src/support_sphere/apis/main.py"
+
+# Runs the Fast API server in editable mode - auto-triggers restart when source files are changed.
+[feature.backend.tasks.fast-api-server-dev]
+cmd = "fastapi dev ./src/support_sphere_py/src/support_sphere/apis/main.py"
+
+
 # ==== Frontend environment ====
 [feature.frontend.tasks]
 install-tools = { depends-on = ["install-flutter"] }
