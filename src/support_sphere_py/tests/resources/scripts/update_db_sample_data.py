@@ -67,10 +67,10 @@ def populate_cluster_and_household_details():
 def get_supabase_client() -> Client:
 
     # Setting up the supabase client for python
-    url = "http://localhost"
     file_path = Path("./deployment/values.dev.yaml")
     with file_path.open(mode='r') as file:
         config = yaml.safe_load(file)
+        url = config['studio']['environment']['SUPABASE_PUBLIC_URL']
         key = config['secret']['jwt']['anonKey']
 
     supabase: Client = create_client(url, key)
