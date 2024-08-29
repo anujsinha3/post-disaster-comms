@@ -2,7 +2,6 @@
 from support_sphere.models.base import BasePublicSchemaModel
 from sqlmodel import Field, Relationship
 from geoalchemy2 import Geometry
-from pydantic import ConfigDict
 
 
 class Cluster(BasePublicSchemaModel, table=True):
@@ -35,7 +34,6 @@ class Cluster(BasePublicSchemaModel, table=True):
     """
 
     __tablename__ = "clusters"
-    model_config: dict = ConfigDict(arbitrary_types_allowed=True)
 
     id: int|None = Field(primary_key=True)
     name: str|None = Field(nullable=True)

@@ -3,7 +3,6 @@ from typing import Optional
 from support_sphere.models.base import BasePublicSchemaModel
 from sqlmodel import Field, Relationship
 from geoalchemy2 import Geometry
-from pydantic import ConfigDict
 
 
 class Household(BasePublicSchemaModel, table=True):
@@ -43,7 +42,6 @@ class Household(BasePublicSchemaModel, table=True):
     """
 
     __tablename__ = "households"
-    model_config: dict = ConfigDict(arbitrary_types_allowed=True)
 
     id: int|None = Field(primary_key=True)
     cluster_id: int|None = Field(foreign_key="public.clusters.id")
