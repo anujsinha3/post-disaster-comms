@@ -16,8 +16,6 @@ class User(SQLModel, table=True):
         The email address of the user.
     phone : str
         The phone number of the user.
-    encrypted_password: str
-        The encrypted password of the user.
     user_profile : Optional[UserProfile]
         The associated user profile object, representing a one-to-one relationship
         between the User and the UserProfile. The relationship to the UserProfile model
@@ -40,7 +38,6 @@ class User(SQLModel, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     email: str = Field()
     phone: str = Field()
-    encrypted_password: str = Field()
 
     user_profile: Optional["UserProfile"] = Relationship(
         back_populates="user", cascade_delete=False,
