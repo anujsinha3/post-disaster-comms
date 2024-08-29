@@ -9,10 +9,12 @@ class BaseRepository:
     repository_engine = engine
 
     @classmethod
-    def add(cls, entity: T) -> None:
+    def add(cls, entity: T) -> T:
         with Session(BaseRepository.repository_engine) as session:
             session.add(entity)
             session.commit()
+            session.refresh(entity)
+            return entity
 
     @classmethod
     def add_all(cls, entity_list: list[T]) -> None:
