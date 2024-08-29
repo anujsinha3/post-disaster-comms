@@ -63,6 +63,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/d7/ee/bf0adb559ad3c786f12bcbc9296b3f5675f529199bef03e2df281fa1fadb/email_validator-2.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5c/ae/6570ae1b67007735229f10f2e1174d6e33c056ee9c0c1754d432acbede94/fastapi-0.112.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/de/ea/396f87204c826d58ed7ce7909f5ea4656249ae7cfa37646083817a239a90/gotrue-2.6.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2a/e5/db6d438da759efbb488c4f3fbdab7764492ff3c3f953132efa6b9f0e9e53/h2-4.1.0-py3-none-any.whl
@@ -147,6 +148,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/d7/ee/bf0adb559ad3c786f12bcbc9296b3f5675f529199bef03e2df281fa1fadb/email_validator-2.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5c/ae/6570ae1b67007735229f10f2e1174d6e33c056ee9c0c1754d432acbede94/fastapi-0.112.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/de/ea/396f87204c826d58ed7ce7909f5ea4656249ae7cfa37646083817a239a90/gotrue-2.6.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2a/e5/db6d438da759efbb488c4f3fbdab7764492ff3c3f953132efa6b9f0e9e53/h2-4.1.0-py3-none-any.whl
@@ -231,6 +233,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/d7/ee/bf0adb559ad3c786f12bcbc9296b3f5675f529199bef03e2df281fa1fadb/email_validator-2.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/5c/ae/6570ae1b67007735229f10f2e1174d6e33c056ee9c0c1754d432acbede94/fastapi-0.112.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/de/ea/396f87204c826d58ed7ce7909f5ea4656249ae7cfa37646083817a239a90/gotrue-2.6.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2a/e5/db6d438da759efbb488c4f3fbdab7764492ff3c3f953132efa6b9f0e9e53/h2-4.1.0-py3-none-any.whl
@@ -1027,6 +1030,16 @@ packages:
   license_family: GPL
   size: 134183
   timestamp: 1597622089595
+- kind: pypi
+  name: geoalchemy2
+  version: 0.15.2
+  url: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
+  sha256: 546455dc39f5bcdfc5b871e57d3f7546c8a6f798eb364c474200f488ace6fd32
+  requires_dist:
+  - sqlalchemy>=1.4
+  - packaging
+  - shapely>=1.7 ; extra == 'shapely'
+  requires_python: '>=3.7'
 - kind: conda
   name: gettext
   version: 0.22.5
@@ -3818,7 +3831,7 @@ packages:
   name: support-sphere-py
   version: 0.1.0a0
   path: ./src/support_sphere_py
-  sha256: e4a457e5b2cce82f6a33e3ab51265afdc75ac9b0b6878e743c64e6364ef1e65c
+  sha256: 600adc731927a444b31c032f20cad94c0e11aaf4879b25a64f8747088a3cf4d8
   requires_dist:
   - sqlmodel>=0.0.21,<0.1
   - supabase>=2.6.0,<2.7
@@ -3826,6 +3839,7 @@ packages:
   - psycopg2>=2.9.9,<3
   - fastapi[standard]>=0.111.0
   - uvicorn>=0.30.6
+  - geoalchemy2>=0.15.2
   requires_python: '>=3.12'
   editable: true
 - kind: conda
