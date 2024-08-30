@@ -24,6 +24,10 @@ class Cluster(BasePublicSchemaModel, table=True):
         A list of `Household` entries associated with this cluster, representing a one-to-many relationship
         where a  single `Cluster` can have multiple households. The relationship is configured with `back_populates`
         to match the `cluster` attribute in the `Household` model, and cascade delete is disabled.
+    cluster_roles : list[ClusterRole]
+        A list of `ClusterRole` entries associated with this cluster, representing a one-to-many relationship
+        where a  single `Cluster` can have multiple cluster_roles. The relationship is configured with `back_populates`
+        to match the `cluster` attribute in the `ClusterRole` model, and cascade delete is disabled.
 
     Notes
     -----
@@ -41,3 +45,4 @@ class Cluster(BasePublicSchemaModel, table=True):
     geom: Geometry|None = Field(sa_type=Geometry(geometry_type="POLYGON"), nullable=True)
 
     households: list["Household"] = Relationship(back_populates="cluster", cascade_delete=False)
+    cluster_roles: list["ClusterRole"] = Relationship(back_populates="cluster", cascade_delete=False)

@@ -3,11 +3,14 @@ import yaml
 from pathlib import Path
 from supabase import create_client, Client
 
-from support_sphere.models.public import UserProfile, People, Cluster, PeopleGroup, Household
+from support_sphere.models.public import (UserProfile, People, Cluster, PeopleGroup, Household,
+                                          RolePermission, UserRole, ClusterRole)
 from support_sphere.models.auth import User
 from support_sphere.repositories.auth import UserRepository
 from support_sphere.repositories.base_repository import BaseRepository
 from support_sphere.repositories.public import UserProfileRepository, PeopleRepository
+
+from support_sphere.models.enums import AppRoles, AppPermissions
 
 import logging
 
@@ -88,6 +91,23 @@ def authenticate_user_signup_signin_signout_via_supabase(supabase: Client):
     supabase.auth.sign_out()
 
 
+def update_user_permissions_roles_by_cluster():
+    role_1 = RolePermission(role=AppRoles.ADMIN, permission=AppPermissions.OPERATIONAL_EVENT_READ)
+    role_2 = RolePermission(role=AppRoles.ADMIN, permission=AppPermissions.OPERATIONAL_EVENT_CREATE)
+    role_3 = RolePermission(role=AppRoles.CAPTAIN, permission=AppPermissions.OPERATIONAL_EVENT_READ)
+
+    BaseRepository.add(role_1)
+    BaseRepository.add(role_2)
+    BaseRepository.add(role_3)
+
+    user_profile = UserProfileRepository.find_by_username('adamabacus')
+    user_role = UserRole(user_profile=user_profile, role=AppRoles.CAPTAIN)
+    BaseRepository.add(user_role)
+
+    cluster_role = ClusterRole(cluster_id=1, user_role=user_role)
+    BaseRepository.add(cluster_role)
+
+
 if __name__ == '__main__':
 
     supabase = get_supabase_client()
@@ -95,5 +115,6 @@ if __name__ == '__main__':
     authenticate_user_signup_signin_signout_via_supabase(supabase)
     populate_cluster_and_household_details()
     populate_user_details(supabase)
+    update_user_permissions_roles_by_cluster()
     
 
