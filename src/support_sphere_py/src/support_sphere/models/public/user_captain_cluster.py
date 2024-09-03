@@ -39,5 +39,5 @@ class UserCaptainCluster(BasePublicSchemaModel, table=True):
     cluster_id: int = Field(foreign_key="public.clusters.id", nullable=False)
     user_role_id: uuid.UUID = Field(foreign_key="public.user_roles.id", nullable=False)
 
-    cluster: Optional["Cluster"] = Relationship(back_populates="user_captain_clusters", cascade_delete=False)
-    user_role: Optional["UserRole"] = Relationship(back_populates="user_captain_clusters", cascade_delete=False)
+    cluster: Optional["Cluster"] = Relationship(back_populates="user_captains", cascade_delete=False)
+    user_role: Optional["UserRole"] = Relationship(back_populates="user_captains", cascade_delete=False)

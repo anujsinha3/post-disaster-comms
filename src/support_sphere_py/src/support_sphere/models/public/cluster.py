@@ -45,4 +45,4 @@ class Cluster(BasePublicSchemaModel, table=True):
     geom: Geometry|None = Field(sa_type=Geometry(geometry_type="POLYGON"), nullable=True)
 
     households: list["Household"] = Relationship(back_populates="cluster", cascade_delete=False)
-    user_captain_clusters: list["UserCaptainCluster"] = Relationship(back_populates="cluster", cascade_delete=False)
+    user_captains: list["UserCaptainCluster"] = Relationship(back_populates="cluster", cascade_delete=False)
