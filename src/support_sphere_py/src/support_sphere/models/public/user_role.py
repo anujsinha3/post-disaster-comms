@@ -21,7 +21,7 @@ class UserRole(BasePublicSchemaModel, table=True):
         This is a foreign key and is unique for each role.
     role : AppRoles
         The role assigned to the user profile, represented as an enum (AppRoles). This field cannot be null.
-    user_captain_clusters : list[ClusterRole]
+    user_captains : list[ClusterRole]
         A list of `UserCaptainCluster` entries associated with this user_role, representing a one-to-many relationship
         where a  single `UserRole` can be captain of multiple clusters. The relationship is configured with
         `back_populates` to match the `user_role` attribute in the `UserCaptainCluster` model. Cascade delete disabled.
