@@ -24,7 +24,7 @@ class Cluster(BasePublicSchemaModel, table=True):
         A list of `Household` entries associated with this cluster, representing a one-to-many relationship
         where a  single `Cluster` can have multiple households. The relationship is configured with `back_populates`
         to match the `cluster` attribute in the `Household` model, and cascade delete is disabled.
-    user_captains : list[ClusterRole]
+    user_captains : list[UserCaptainCluster]
         A list of `UserCaptainCluster` entries associated with this cluster, representing a one-to-many relationship
         where a  single `Cluster` can have multiple captains. The relationship is configured with `back_populates`
         to match the `cluster` attribute in the `UserCaptainCluster` model, and cascade delete is disabled.
