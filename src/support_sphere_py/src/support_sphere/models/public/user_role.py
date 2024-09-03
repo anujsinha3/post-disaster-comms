@@ -21,10 +21,10 @@ class UserRole(BasePublicSchemaModel, table=True):
         This is a foreign key and is unique for each role.
     role : AppRoles
         The role assigned to the user profile, represented as an enum (AppRoles). This field cannot be null.
-    cluster_roles : list[ClusterRole]
-        A list of `ClusterRole` entries associated with this user_role, representing a one-to-many relationship
-        where a  single `UserRole` can have multiple cluster_roles. The relationship is configured with `back_populates`
-        to match the `user_role` attribute in the `ClusterRole` model, and cascade delete is disabled.
+    user_captain_clusters : list[ClusterRole]
+        A list of `UserCaptainCluster` entries associated with this user_role, representing a one-to-many relationship
+        where a  single `UserRole` can be captain of multiple clusters. The relationship is configured with
+        `back_populates` to match the `user_role` attribute in the `UserCaptainCluster` model. Cascade delete disabled.
     user_profile : Optional[UserProfile]
         The associated `UserProfile` object for this role. It represents a one-to-one relationship where
         each `UserRole` is linked to a single `UserProfile`. The relationship uses `back_populates` to match
@@ -40,7 +40,7 @@ class UserRole(BasePublicSchemaModel, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     user_profile_id: uuid.UUID | None = Field(foreign_key="public.user_profiles.id", nullable=False)
     role: AppRoles = Field(sa_type=Enum(AppRoles), nullable=False)
-    cluster_roles: list["ClusterRole"] = Relationship(back_populates="user_role", cascade_delete=False)
+    user_captain_clusters: list["UserCaptainCluster"] = Relationship(back_populates="user_role", cascade_delete=False)
 
     user_profile: Optional["UserProfile"] = Relationship(
         back_populates="user_roles", cascade_delete=False,

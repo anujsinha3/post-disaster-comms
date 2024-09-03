@@ -4,7 +4,7 @@ from pathlib import Path
 from supabase import create_client, Client
 
 from support_sphere.models.public import (UserProfile, People, Cluster, PeopleGroup, Household,
-                                          RolePermission, UserRole, ClusterRole)
+                                          RolePermission, UserRole, UserCaptainCluster)
 from support_sphere.models.auth import User
 from support_sphere.repositories.auth import UserRepository
 from support_sphere.repositories.base_repository import BaseRepository
@@ -104,7 +104,7 @@ def update_user_permissions_roles_by_cluster():
     user_role = UserRole(user_profile=user_profile, role=AppRoles.CAPTAIN)
     BaseRepository.add(user_role)
 
-    cluster_role = ClusterRole(cluster_id=1, user_role=user_role)
+    cluster_role = UserCaptainCluster(cluster_id=1, user_role=user_role)
     BaseRepository.add(cluster_role)
 
 

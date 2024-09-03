@@ -5,9 +5,10 @@ from support_sphere.models.base import BasePublicSchemaModel
 from sqlmodel import Field, Relationship
 
 
-class ClusterRole(BasePublicSchemaModel, table=True):
+class UserCaptainCluster(BasePublicSchemaModel, table=True):
     """
-    Represents the association between clusters and role permissions in the 'public' schema under the 'role_clusters' table.
+    Represents the association between clusters and the captain role in the 'public' schema under the 'user_captain_clusters'
+     table.
 
     Attributes
     ----------
@@ -20,10 +21,10 @@ class ClusterRole(BasePublicSchemaModel, table=True):
         The identifier for the user_role associated with this cluster, representing a foreign key
         to the 'public.user_roles' table.
     cluster : Optional[Cluster]
-        The associated `Cluster` object, representing a many-to-one relationship between `ClusterRole`
+        The associated `Cluster` object, representing a many-to-one relationship between `UserCaptainCluster`
         and `Cluster`. Cascading delete is disabled.
     user_role : Optional[UserRole]
-        The associated `UserRole` object, representing a many-to-one relationship between `ClusterRole`
+        The associated `UserRole` object, representing a many-to-one relationship between `UserCaptainCluster`
         and `UserRole`. Cascading delete is disabled.
 
     Notes
@@ -32,11 +33,11 @@ class ClusterRole(BasePublicSchemaModel, table=True):
       'user_roles' tables respectively.
     - The relationships with `Cluster` and `RolePermission` are designed as many-to-one relationships.
     """
-    __tablename__ = "cluster_roles"
+    __tablename__ = "user_captain_clusters"
 
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     cluster_id: int = Field(foreign_key="public.clusters.id", nullable=False)
     user_role_id: uuid.UUID = Field(foreign_key="public.user_roles.id", nullable=False)
 
-    cluster: Optional["Cluster"] = Relationship(back_populates="cluster_roles", cascade_delete=False)
-    user_role: Optional["UserRole"] = Relationship(back_populates="cluster_roles", cascade_delete=False)
+    cluster: Optional["Cluster"] = Relationship(back_populates="user_captain_clusters", cascade_delete=False)
+    user_role: Optional["UserRole"] = Relationship(back_populates="user_captain_clusters", cascade_delete=False)
