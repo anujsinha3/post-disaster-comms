@@ -17,6 +17,8 @@ class Cluster(BasePublicSchemaModel, table=True):
         The name of the cluster.
     meeting_place : str, optional
         The location where meetings are held for the cluster.
+    notes : str, optional
+        Additional notes or comments related to the cluster.
     geom : Geometry, optional
         A geometric representation of the cluster area, stored as a POLYGON type. This field uses the SQLAlchemy
         `Geometry` type to store spatial data.
@@ -42,6 +44,7 @@ class Cluster(BasePublicSchemaModel, table=True):
     id: int|None = Field(primary_key=True)
     name: str|None = Field(nullable=True)
     meeting_place: str|None = Field(nullable=True)
+    notes: str | None = Field(nullable=True)
     geom: Geometry|None = Field(sa_type=Geometry(geometry_type="POLYGON"), nullable=True)
 
     households: list["Household"] = Relationship(back_populates="cluster", cascade_delete=False)
