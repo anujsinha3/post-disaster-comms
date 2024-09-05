@@ -27,5 +27,5 @@ class RolePermission(BasePublicSchemaModel, table=True):
     __tablename__ = "role_permissions"
 
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
-    role: AppRoles = Field(sa_type=Enum(AppRoles), nullable=False)
-    permission: AppPermissions = Field(sa_type=Enum(AppPermissions), nullable=False)
+    role: AppRoles = Field(sa_type=Enum(AppRoles, name="app_roles"), nullable=False)
+    permission: AppPermissions = Field(sa_type=Enum(AppPermissions, name="app_permissions"), nullable=False)

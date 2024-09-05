@@ -38,10 +38,10 @@ class UserRole(BasePublicSchemaModel, table=True):
     __tablename__ = "user_roles"
 
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
-    user_profile_id: uuid.UUID | None = Field(foreign_key="public.user_profiles.id", nullable=False)
-    role: AppRoles = Field(sa_type=Enum(AppRoles), nullable=False)
+    user_profile_id: uuid.UUID | None = Field(foreign_key="public.user_profiles.id", nullable=False, unique=True)
+    role: AppRoles = Field(sa_type=Enum(AppRoles, name="app_roles"), nullable=False)
     user_captains: list["UserCaptainCluster"] = Relationship(back_populates="user_role", cascade_delete=False)
 
     user_profile: Optional["UserProfile"] = Relationship(
-        back_populates="user_roles", cascade_delete=False,
+        back_populates="user_role", cascade_delete=False,
     )
