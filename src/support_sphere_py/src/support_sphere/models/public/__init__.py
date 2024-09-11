@@ -7,9 +7,16 @@ from support_sphere.models.public.user_role import UserRole
 from support_sphere.models.public.user_captain_cluster import UserCaptainCluster
 from support_sphere.models.public.role_permission import RolePermission
 from support_sphere.models.public.operational_event import OperationalEvent
+from support_sphere.models.public.point_of_interest import PointOfInterest
+from support_sphere.models.public.resource import Resource
+from support_sphere.models.public.resource_subtype_tag import ResourceSubtypeTag
+from support_sphere.models.public.resource_tag import ResourceTag
+from support_sphere.models.public.resource_type import ResourceType
+from support_sphere.models.public.user_resource import UserResource
 
 
 # New models created should be exposed by adding to __all__. This is used by SQLModel.metadata
 # https://sqlmodel.tiangolo.com/tutorial/create-db-and-table/#sqlmodel-metadata-order-matters
 __all__ = ['UserProfile', 'People', 'Cluster', 'PeopleGroup', 'Household', 'UserRole', 'UserCaptainCluster',
-           'RolePermission', 'OperationalEvent']
+           'RolePermission', 'OperationalEvent', 'PointOfInterest', 'Resource', 'ResourceSubtypeTag', 'ResourceTag',
+           'ResourceType', 'UserResource']
