@@ -31,6 +31,8 @@ class UserProfile(BasePublicSchemaModel, table=True):
     user_resources : list[UserResource]
         A list of `UserResource` objects associated with this user profile, allowing the user to manage resources.
         Cascading delete is disabled.
+    user_checklists : list[Checklist]
+        A list of `UserChecklist` objects associated with this user profile
 
     Notes
     -----
@@ -49,4 +51,5 @@ class UserProfile(BasePublicSchemaModel, table=True):
     user_role: Optional["UserRole"] = Relationship(back_populates="user_profile", cascade_delete=False)
     operational_events: list["OperationalEvent"] = Relationship(back_populates="user_profile", cascade_delete=False)
     user_resources: list["UserResource"] = Relationship(back_populates="user_profile", cascade_delete=False)
+    user_checklists: list["UserChecklist"] = Relationship(back_populates="user_profile", cascade_delete=False)
 
