@@ -1,3 +1,4 @@
+import uuid
 from typing import Optional
 
 from support_sphere.models.base import BasePublicSchemaModel
@@ -11,9 +12,9 @@ class Resource(BasePublicSchemaModel, table=True):
 
     Attributes
     ----------
-    id : int, optional
+    id : uuid
         The unique identifier for the resource. This is the primary key.
-    resource_type : int, optional
+    resource_type_id : uuid
         A foreign key referring to the 'resource_types' table that categorizes the resource.
     name : str, optional
         The name of the resource. This field is required.
@@ -33,8 +34,8 @@ class Resource(BasePublicSchemaModel, table=True):
 
     __tablename__ = "resources"
 
-    id: int | None = Field(primary_key=True)
-    resource_type_id: int|None = Field(foreign_key="public.resource_types.id", nullable=False)
+    id: uuid.UUID | None = Field(default_factory=uuid.uuid4, primary_key=True)
+    resource_type_id: uuid.UUID | None = Field(foreign_key="public.resource_types.id", nullable=False)
     name: str | None = Field(nullable=False)
     description: str | None = Field(nullable=True)
     notes: str | None = Field(nullable=False)

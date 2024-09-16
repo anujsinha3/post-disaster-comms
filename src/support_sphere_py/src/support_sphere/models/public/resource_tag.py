@@ -1,3 +1,4 @@
+import uuid
 from typing import Optional
 
 from support_sphere.models.base import BasePublicSchemaModel
@@ -11,11 +12,11 @@ class ResourceTag(BasePublicSchemaModel, table=True):
 
     Attributes
     ----------
-    resource_id : int, optional
+    resource_id : uuid
         The unique identifier for the resource. It is a required field and references the `resources` table.
-    resource_subtype_tag_id : int, optional
+    resource_subtype_tag_id : uuid
         The unique identifier for the resource subtype tag. It d references the `resource_subtype_tags` table.
-    resource : Optional[Resource]
+    resources : list[Resource]
         Defines a many-to-one relationship with the `Resource` model. Each `ResourceTag` is associated with a specific `Resource`.
         `back_populates` is set to "resource_tags" in the `Resource` model, establishing the reverse relationship.
     resource_subtype_tag : Optional[ResourceSubtypeTag]
@@ -24,8 +25,8 @@ class ResourceTag(BasePublicSchemaModel, table=True):
  """
     __tablename__ = "resource_tags"
 
-    resource_id: int|None = Field(nullable=False, primary_key=True, foreign_key="public.resources.id")
-    resource_subtype_tag_id: int|None = Field(nullable=True, foreign_key="public.resource_subtype_tags.id")
+    resource_id: uuid.UUID = Field(primary_key=True, foreign_key="public.resources.id")
+    resource_subtype_tag_id: uuid.UUID = Field(nullable=True, foreign_key="public.resource_subtype_tags.id")
 
     resources: list["Resource"] = Relationship(back_populates="resource_tags", cascade_delete=False)
     resource_subtype_tag: Optional["ResourceSubtypeTag"] = Relationship(back_populates="resource_tags", cascade_delete=False)

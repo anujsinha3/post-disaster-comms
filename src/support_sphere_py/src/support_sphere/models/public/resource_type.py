@@ -1,3 +1,4 @@
+import uuid
 from support_sphere.models.base import BasePublicSchemaModel
 from sqlmodel import Field, Relationship
 
@@ -9,7 +10,7 @@ class ResourceType(BasePublicSchemaModel, table=True):
 
     Attributes
     ----------
-    id : int, optional
+    id : uuid
         The unique identifier for the resource type.
     name : str
         The name of the resource type. It is a required field, meaning it cannot be nullable.
@@ -22,7 +23,7 @@ class ResourceType(BasePublicSchemaModel, table=True):
     """
     __tablename__ = "resource_types"
 
-    id: int|None = Field(primary_key=True)
+    id: uuid.UUID|None = Field(default_factory=uuid.uuid4, primary_key=True)
     name: str|None = Field(nullable=False)
 
     resources: list["Resource"] = Relationship(back_populates="resource_type", cascade_delete=False)

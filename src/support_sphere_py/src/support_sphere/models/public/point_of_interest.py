@@ -1,3 +1,4 @@
+import uuid
 from support_sphere.models.base import BasePublicSchemaModel
 from sqlmodel import Field
 from geoalchemy2 import Geometry
@@ -10,7 +11,7 @@ class PointOfInterest(BasePublicSchemaModel, table=True):
 
     Attributes
     ----------
-    id : int, optional
+    id : uuid
         The unique identifier for the point of interest. This is the primary key.
     name : str, optional
         The name of the point of interest. This field is required.
@@ -21,7 +22,7 @@ class PointOfInterest(BasePublicSchemaModel, table=True):
     """
     __tablename__ = "point_of_interests"
 
-    id: int | None = Field(primary_key=True)
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     name: str | None = Field(nullable=False)
     address: str | None = Field(nullable=False)
     geom: Geometry|None = Field(sa_type=Geometry(geometry_type="POLYGON"), nullable=True)
