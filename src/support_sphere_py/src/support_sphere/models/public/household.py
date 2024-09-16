@@ -56,4 +56,3 @@ class Household(BasePublicSchemaModel, table=True):
 
     cluster: Optional["Cluster"] = Relationship(back_populates="households", cascade_delete=False)
     people_group: list["PeopleGroup"] = Relationship(back_populates="household", cascade_delete=False)
-
