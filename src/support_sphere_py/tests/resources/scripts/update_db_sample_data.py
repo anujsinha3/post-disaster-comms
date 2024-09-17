@@ -27,7 +27,7 @@ def populate_user_details(supabase: Client):
 
     all_households = BaseRepository.select_all(Household)
 
-    file_path = Path("./src/support_sphere_py/tests/resources/data/sample_data.csv")
+    file_path = Path("./support_sphere_py/tests/resources/data/sample_data.csv")
     with file_path.open(mode='r', newline='') as file:
         csv_reader = csv.DictReader(file)
 
@@ -72,11 +72,12 @@ def populate_cluster_and_household_details():
 
 def get_supabase_client() -> Client:
 
+    logger.info("Establishing connection via supabase")
     # Setting up the supabase client for python
     file_path = Path("./deployment/values.dev.yaml")
     with file_path.open(mode='r') as file:
         config = yaml.safe_load(file)
-        url = config['studio']['environment']['SUPABASE_PUBLIC_URL']
+        url = 'http://supabase-supabase-kong:8000/'
         key = config['secret']['jwt']['anonKey']
 
     supabase: Client = create_client(url, key)

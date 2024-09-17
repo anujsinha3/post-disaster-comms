@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: populate-db-job
+spec:
+  ttlSecondsAfterFinished: 120 # the job pod will auto-delete 120 secs after completion
+  template:
+    spec:
+      containers:
+      - name: populate-db-job
+        image: pdc/populate_db:1.0
+        imagePullPolicy: Never
+      restartPolicy: Never
+  backoffLimit: 0
