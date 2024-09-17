@@ -110,7 +110,8 @@ def update_user_permissions_roles_by_cluster():
     user_role = UserRole(user_profile=user_profile, role=AppRoles.CAPTAIN)
     BaseRepository.add(user_role)
 
-    cluster_role = UserCaptainCluster(cluster_id=1, user_role=user_role)
+    all_clusters = BaseRepository.select_all(Cluster)
+    cluster_role = UserCaptainCluster(cluster=all_clusters[-1], user_role=user_role)
     BaseRepository.add(cluster_role)
 
     user_profile = UserProfileRepository.find_by_username('bethbodmas')
