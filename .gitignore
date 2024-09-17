@@ -177,3 +177,7 @@ cython_debug/
 # OpenTofu
 .terraform/
 *.tfstate*
+
+# Encryption-related files
+*.decrypted.yaml
+keys.asc

@@ -1,6 +1,7 @@
 import csv
 import datetime
 import uuid
+import argparse
 
 import yaml
 from pathlib import Path
@@ -70,11 +71,11 @@ def populate_cluster_and_household_details():
     BaseRepository.add(household)
 
 
-def get_supabase_client() -> Client:
+def get_supabase_client(cloud: bool | None = False) -> Client:
 
     logger.info("Establishing connection via supabase")
     # Setting up the supabase client for python
-    file_path = Path("./deployment/values.dev.yaml")
+    file_path = Path("./deployment/values.dev.yaml") if not cloud else Path("./deployment/values.cloud.decrypted.yaml")
     with file_path.open(mode='r') as file:
         config = yaml.safe_load(file)
         url = 'http://supabase-supabase-kong:8000/'
@@ -159,8 +160,11 @@ def test_unauthorized_app_mode_update(supabase: Client):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Populate sample entries')
+    parser.add_argument('--cloud', action='store_true', help='Flag for running in the cloud')
+    args = parser.parse_args()
 
-    supabase = get_supabase_client()
+    supabase = get_supabase_client(args.cloud)
 
     authenticate_user_signup_signin_signout_via_supabase(supabase)
     populate_cluster_and_household_details()

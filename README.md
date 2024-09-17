@@ -111,6 +111,26 @@ For now, contact Niki for least-privileged IAM user credentials. These will be u
 
 This user will assume the necessary roles to get things going
 
+### Editing deployment/values.cloud.yaml
+
+(Optional) To open the file with VSCode, run the following first
+
+```
+export EDITOR="code --wait"
+```
+
+Then run the following. Save and close the file when you're done editing for all of your new values to be re-encrypted.
+
+```
+pixi run edit-cloud-values
+```
+
+If you run into an issue like `gpg: decryption failed: Inappropriate ioctl for device`, run the following command and retry
+
+```
+export GPG_TTY=$(tty)
+```
+
 ### Deploying infrastructure changes
 
 The following commands will allow you to do what you gotta do to update and deploy the infrastructure
@@ -147,6 +167,14 @@ The server will stop daily at 01:00 UTC (6PM PDT/5PM PST), but if you wanna be a
 
 ```
 pixi run cloud-server-stop
+```
+
+### Access the development server when it's running
+
+This command uses [AWS's Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) to access the development server without needing to distribute ssh keys. Assuming you have access to the IAM roles needed for everything else related to the cloud here, this command should just work!
+
+```
+pixi run cloud-server-access
 ```
 
 
