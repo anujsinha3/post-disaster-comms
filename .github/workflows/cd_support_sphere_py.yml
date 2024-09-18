@@ -1,4 +1,4 @@
-name: CD
+name: Publish Support Sphere Python Package to PyPI and TestPyPI
 
 on:
   workflow_dispatch:
@@ -39,6 +39,11 @@ jobs:
         name: Install Python
         with:
           python-version: "3.12"
+      - name: Change directory to package
+        working-directory: src/support_sphere_py
+        run: |
+          ls -ltrh  # Ensure pyproject.toml is present
+          hatch build  # Build package using Hatchling
       - uses: actions/download-artifact@v4
         with:
           name: Packages
