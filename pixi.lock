@@ -6360,12 +6360,12 @@ packages:
   name: support-sphere-py
   version: 0.1.0a0
   path: ./src/support_sphere_py
-  sha256: e1046990b093fd209a4900a9d6dd0360146ad56ef2764df70c6997cc7eae443d
+  sha256: 600adc731927a444b31c032f20cad94c0e11aaf4879b25a64f8747088a3cf4d8
   requires_dist:
   - sqlmodel>=0.0.21,<0.1
   - supabase>=2.6.0,<2.7
   - sqlmodel>=0.0.21,<0.0.22
-  - psycopg2-binary>=2.9.9
+  - psycopg2>=2.9.9,<3
   - fastapi[standard]>=0.111.0
   - uvicorn>=0.30.6
   - geoalchemy2>=0.15.2

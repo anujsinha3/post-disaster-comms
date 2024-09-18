@@ -42,27 +42,20 @@ To run this app locally, follow these steps:
 
 1. Run the Docker daemon
 
-2. Set environment variables with your Docker username and password
-
-   ```console
-   export DOCKER_USERNAME=<your docker username>
-   export DOCKER_PASSWORD=<your docker password>
-   ```
-
-3. Set up the infrastructure. You should have a Supabase instance running at http://localhost
+2. Set up the infrastructure. You should have a Supabase instance running at http://localhost
 
    ```console
    pixi run -e backend setup-infra
    ```
 
-4. Optional: If you want to add sample entries in your local Supabase Instance. 
+3. Optional: If you want to add sample entries in your local Supabase Instance. 
    Run the following command in a new terminal session.
    
    ```console
    pixi run setup-db-data-via-k8s-job
    ```
    
-5. Run the API server locally by running the following command in a new terminal session.  
+4. Run the API server locally by running the following command in a new terminal session.  
    Note: the argument `fast-api-server-dev` in the command below runs the server in editable mode, where each change in 
    the source file triggers the restart of the fastapi local server.  
    For production: replace `fast-api-server-dev` with `fast-api-server-run`.
@@ -134,6 +127,19 @@ export GPG_TTY=$(tty)
 ### Deploying infrastructure changes
 
 The following commands will allow you to do what you gotta do to update and deploy the infrastructure
+
+#### Initialize the infrastructure on your machine
+
+From the `tofu init` docs
+
+> This is the first command that should be run for any new or existing
+  OpenTofu configuration per machine. This sets up all the local data
+  necessary to run OpenTofu that is typically not committed to version
+  control.
+
+```
+pixi run cloud-init
+```
 
 #### Preview the changes to your infrastructure
 

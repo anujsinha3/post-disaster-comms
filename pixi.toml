@@ -65,7 +65,7 @@ kubectl apply -f deployment/kubernetes/populate_db_job.yaml && \
 # ==== Backend environment ====
 [feature.backend.tasks]
 install-tools = { depends-on = ["install-k3d", "fetch-supabase-chart"] }
-setup-infra = { depends-on = ["k3d-create-cluster", "set-registry-secret", "setup-supabase"] }
+setup-infra = { depends-on = ["k3d-create-cluster", "setup-supabase"] }
 setup-infra-cloud = { depends-on = ["k3d-create-cluster", "setup-supabase-cloud"] }
 open-db-port = { depends-on = ["port-forward-supabase-db"] }
 
@@ -75,12 +75,6 @@ kubernetes-helm = ">=3.15.3,<3.16"
 kubernetes-client = ">=1.23.6,<1.31"
 
 # Supabase tasks
-[feature.backend.tasks.set-registry-secret]
-# This task will need docker username and password
-# to be set as environment variables
-# DOCKER_USERNAME and DOCKER_PASSWORD
-cmd = "scripts/docker-login.sh"
-
 [feature.backend.tasks.fetch-supabase-chart]
 cmd = "git submodule update --init"
 
@@ -233,6 +227,9 @@ cmd = "python scripts/run-cloud-server.py --scale-up"
 
 [feature.cloud.tasks.cloud-server-stop]
 cmd = "python scripts/run-cloud-server.py --scale-down"
+
+[feature.cloud.tasks.cloud-server-replace]
+cmd = "python scripts/run-cloud-server.py --replace"
 
 [feature.cloud.tasks.cloud-server-access]
 cmd = "scripts/access-cloud-server.sh"
