@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Change directory to package
         working-directory: src/support_sphere_py
+        run: |
+          ls -ltrh  # Ensure pyproject.toml is present
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
