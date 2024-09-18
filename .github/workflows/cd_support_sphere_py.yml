@@ -30,6 +30,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: hynek/build-and-inspect-python-package@v2
+        with:
+          path: src/support_sphere_py/
 
   test-built-dist:
     needs: [dist]
