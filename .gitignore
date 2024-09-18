@@ -181,3 +181,6 @@ cython_debug/
 # Encryption-related files
 *.decrypted.yaml
 keys.asc
+
+# Hatch Version
+src/support_sphere_py/src/support_sphere/version.py
