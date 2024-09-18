@@ -10,5 +10,46 @@ spec:
       - name: populate-db-job
         image: pdc/populate_db:1.0
         imagePullPolicy: Never
+        env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: DB_HOST
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: DB_PORT
+          - name: DB_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: DB_USERNAME
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: secret-dev
+                key: DB_PASSWORD
+          - name: DB_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: DB_NAME
+          - name: SUPABASE_KONG_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: SUPABASE_KONG_HOST
+          - name: SUPABASE_KONG_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: config-dev
+                key: SUPABASE_KONG_PORT
+          - name: JWT_ANON_KEY
+            valueFrom:
+              secretKeyRef:
+                name: secret-dev
+                key: JWT_ANON_KEY
       restartPolicy: Never
   backoffLimit: 0

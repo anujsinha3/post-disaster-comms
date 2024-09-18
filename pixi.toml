@@ -26,6 +26,8 @@ support-sphere-py = { path = "./src/support_sphere_py", editable = true }
 setup-db-data-via-k8s-job = { depends-on = [
     "build-docker-image-for-api-service",
     "import-docker-image-in-k8s-cluster",
+    "create-secret",
+    "create-configmap",
     "run-container-job"
 ]}
 
@@ -35,9 +37,30 @@ cmd = "docker build -t pdc/populate_db:1.0 -f deployment/docker/populate_db.Dock
 [feature.db.tasks.import-docker-image-in-k8s-cluster]
 cmd = "k3d image import pdc/populate_db:1.0 -c pdc-cluster"
 
-[feature.db.tasks.run-container-job]
-cmd = "kubectl apply -f deployment/kubernetes/populate_db_job.yaml && sleep 10 && kubectl get pods --selector=job-name=populate-db-job"
+[feature.db.tasks.create-secret]
+cmd = """
+kubectl create secret generic secret-dev \
+  --from-literal=DB_PASSWORD=example123456 \
+  --from-literal=JWT_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE
+"""
 
+[feature.db.tasks.create-configmap]
+cmd = """
+kubectl create configmap config-dev \
+  --from-literal=DB_HOST="supabase-supabase-db" \
+  --from-literal=DB_PORT="5432" \
+  --from-literal=DB_USERNAME="postgres" \
+  --from-literal=DB_NAME="postgres" \
+  --from-literal=SUPABASE_KONG_HOST="supabase-supabase-kong" \
+  --from-literal=SUPABASE_KONG_PORT="8000"
+"""
+
+[feature.db.tasks.run-container-job]
+cmd = """
+kubectl apply -f deployment/kubernetes/populate_db_job.yaml && \
+  sleep 10 && \
+  kubectl get pods --selector=job-name=populate-db-job
+"""
 
 # ==== Backend environment ====
 [feature.backend.tasks]
