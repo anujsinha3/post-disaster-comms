@@ -22,14 +22,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Change directory to package
         working-directory: src/support_sphere_py
         run: |
           ls -ltrh  # Ensure pyproject.toml is present
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - uses: hynek/build-and-inspect-python-package@v2
 
   test-built-dist:
