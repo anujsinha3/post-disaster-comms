@@ -30,6 +30,9 @@ jobs:
         run: |
           ls -ltrh  # Ensure pyproject.toml is present
       - uses: hynek/build-and-inspect-python-package@v2
+        with:
+          name: working directory
+          path: src/support_sphere_py/
 
   test-built-dist:
     needs: [dist]
