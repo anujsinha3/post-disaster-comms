@@ -23,19 +23,19 @@ spec:
                 key: DB_PORT
           - name: DB_USERNAME
             valueFrom:
-              configMapKeyRef:
-                name: config-dev
-                key: DB_USERNAME
+              secretKeyRef:
+                name: supabase-db
+                key: username
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: secret-dev
-                key: DB_PASSWORD
+                name: supabase-db
+                key: password
           - name: DB_NAME
             valueFrom:
-              configMapKeyRef:
-                name: config-dev
-                key: DB_NAME
+              secretKeyRef:
+                name: supabase-db
+                key: database
           - name: SUPABASE_KONG_HOST
             valueFrom:
               configMapKeyRef:
@@ -49,7 +49,7 @@ spec:
           - name: JWT_ANON_KEY
             valueFrom:
               secretKeyRef:
-                name: secret-dev
-                key: JWT_ANON_KEY
+                name: supabase-jwt
+                key: anonKey
       restartPolicy: Never
   backoffLimit: 0

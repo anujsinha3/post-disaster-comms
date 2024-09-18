@@ -6,25 +6,16 @@ WORKDIR /app
 # Copy the Python script and requirements file into the container
 COPY ../../src/support_sphere_py /app/support_sphere_py
 
-# Define ARGs for environment variables that will be passed at build time
-ARG DB_HOST
-ARG DB_PORT
-ARG DB_USERNAME
-ARG DB_PASSWORD
-ARG DB_NAME
-ARG SUPABASE_KONG_HOST
-ARG SUPABASE_KONG_PORT
-ARG JWT_ANON_KEY
 
 # Below ENV values are overridden when running the via K8s Job else the above arg values are used.
-ENV DB_HOST=${DB_HOST}
-ENV DB_PORT=${DB_PORT}
-ENV DB_USERNAME=${DB_USERNAME}
-ENV DB_PASSWORD=${DB_PASSWORD}
-ENV DB_NAME=${DB_NAME}
-ENV SUPABASE_KONG_HOST=${SUPABASE_KONG_HOST}
-ENV SUPABASE_KONG_PORT=${SUPABASE_KONG_PORT}
-ENV JWT_ANON_KEY=${JWT_ANON_KEY}
+ENV DB_HOST=localhost
+ENV DB_PORT=5432
+ENV DB_USERNAME=postgres
+ENV DB_PASSWORD=example123456
+ENV DB_NAME=postgres
+ENV SUPABASE_KONG_HOST=supabase-supabase-kong
+ENV SUPABASE_KONG_PORT=8000
+ENV JWT_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE
 
 
 # Install any necessary dependencies
