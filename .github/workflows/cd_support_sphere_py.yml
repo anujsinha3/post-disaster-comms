@@ -23,7 +23,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/support_sphere_py
+        working-directory: ./src/support_sphere_py
 
     steps:
       - uses: actions/checkout@v4
@@ -65,7 +65,7 @@ jobs:
 
           echo "=== Testing wheel file ==="
           # Install wheel to get dependencies and check import
-          python -m pip install --extra-index-url https://test.pypi.org/simple --upgrade --pre support_sphere_py
+          python -m pip install --extra-index-url https://test.pypi.org/simple --upgrade --pre --only-binary=:all: support_sphere_py
           python -c "import support_sphere_py; print(support_sphere_py.__version__)"
           echo "=== Done testing wheel file ==="
 
