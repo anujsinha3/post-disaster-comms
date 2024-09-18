@@ -66,14 +66,14 @@ jobs:
           echo "=== Testing wheel file ==="
           # Install wheel to get dependencies and check import
           python -m pip install --extra-index-url https://test.pypi.org/simple --upgrade --pre --only-binary=:all: support_sphere_py
-          python -c "import support_sphere_py; print(support_sphere_py.__version__)"
+          python -c "import support_sphere; print(support_sphere.__version__)"
           echo "=== Done testing wheel file ==="
 
           echo "=== Testing source tar file ==="
           # Install tar gz and check import
           python -m pip uninstall --yes support_sphere_py
           python -m pip install --extra-index-url https://test.pypi.org/simple --upgrade --pre --no-binary=support_sphere_py support_sphere_py
-          python -c "import support_sphere_py; print(support_sphere_py.__version__)"
+          python -c "import support_sphere; print(support_sphere.__version__)"
           echo "=== Done testing source tar file ==="
 
   publish:
