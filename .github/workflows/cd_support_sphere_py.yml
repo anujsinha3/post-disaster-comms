@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - feat-test-publish
+      - feature-setup-k8s-job-for-db-setup
   release:
     types:
       - published
