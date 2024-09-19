@@ -26,7 +26,6 @@ support-sphere-py = { path = "./src/support_sphere_py", editable = true }
 setup-db-data-via-k8s-job = { depends-on = [
     "build-docker-image-for-api-service",
     "import-docker-image-in-k8s-cluster",
-    "create-secret",
     "create-configmap",
     "run-container-job"
 ]}
