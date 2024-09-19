@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - feature-setup-k8s-job-for-db-setup
+      - main
   release:
     types:
       - published

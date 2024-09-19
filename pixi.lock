@@ -6194,9 +6194,9 @@ packages:
   requires_python: '>=3.8,<4.0'
 - kind: pypi
   name: support-sphere-py
-  version: 0.0.6
+  version: 0.0.7
   path: ./src/support_sphere_py
-  sha256: f19c916db931233df5e0066da1738500202a92c9193b3ad4135964e92d4159a8
+  sha256: 67b861bce2c950a07ce356877a21203b138f86d1268ca9f8f646cc2c00291319
   requires_dist:
   - sqlmodel>=0.0.21,<0.1
   - supabase>=2.6.0,<2.7
