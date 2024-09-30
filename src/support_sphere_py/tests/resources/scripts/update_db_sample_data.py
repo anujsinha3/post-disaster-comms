@@ -9,7 +9,7 @@ from support_sphere.models.public import (UserProfile, People, Cluster, PeopleGr
 from support_sphere.models.auth import User
 from support_sphere.repositories.auth import UserRepository
 from support_sphere.repositories.base_repository import BaseRepository
-from support_sphere.repositories.public import UserProfileRepository, PeopleRepository
+from support_sphere.repositories.public import UserProfileRepository, UserRoleRepository, PeopleRepository
 from support_sphere.repositories import supabase_client
 
 from support_sphere.models.enums import AppRoles, AppPermissions, OperationalStatus
@@ -42,6 +42,9 @@ def populate_user_details():
                 profile = UserProfile(username=row['username'], user=user)
                 UserProfileRepository.add(profile)
                 user_profile = UserProfileRepository.find_by_username(row['username'])
+
+                user_role = UserRole(user_profile=user_profile, role=AppRoles.USER)
+                BaseRepository.add(user_role)
 
             # Create People Entry
             person_detail = People(given_name=row['given_name'], family_name=row['family_name'],
@@ -78,9 +81,9 @@ def authenticate_user_signup_signin_signout_via_supabase():
 def update_user_permissions_roles_by_cluster():
     role_1 = RolePermission(role=AppRoles.ADMIN, permission=AppPermissions.OPERATIONAL_EVENT_READ)
     role_2 = RolePermission(role=AppRoles.ADMIN, permission=AppPermissions.OPERATIONAL_EVENT_CREATE)
-    role_3 = RolePermission(role=AppRoles.MANAGER, permission=AppPermissions.OPERATIONAL_EVENT_CREATE)
-    role_4 = RolePermission(role=AppRoles.MANAGER, permission=AppPermissions.OPERATIONAL_EVENT_READ)
-    role_5 = RolePermission(role=AppRoles.CAPTAIN, permission=AppPermissions.OPERATIONAL_EVENT_READ)
+    role_3 = RolePermission(role=AppRoles.COM_ADMIN, permission=AppPermissions.OPERATIONAL_EVENT_CREATE)
+    role_4 = RolePermission(role=AppRoles.COM_ADMIN, permission=AppPermissions.OPERATIONAL_EVENT_READ)
+    role_5 = RolePermission(role=AppRoles.SUBCOM_AGENT, permission=AppPermissions.OPERATIONAL_EVENT_READ)
 
     BaseRepository.add(role_1)
     BaseRepository.add(role_2)
@@ -89,7 +92,8 @@ def update_user_permissions_roles_by_cluster():
     BaseRepository.add(role_5)
 
     user_profile = UserProfileRepository.find_by_username('adamabacus')
-    user_role = UserRole(user_profile=user_profile, role=AppRoles.CAPTAIN)
+    user_role = UserRoleRepository.find_by_user_profile_id(user_profile.id)
+    user_role.role = AppRoles.SUBCOM_AGENT
     BaseRepository.add(user_role)
 
     all_clusters = BaseRepository.select_all(Cluster)
@@ -97,7 +101,8 @@ def update_user_permissions_roles_by_cluster():
     BaseRepository.add(cluster_role)
 
     user_profile = UserProfileRepository.find_by_username('bethbodmas')
-    user_role = UserRole(user_profile=user_profile, role=AppRoles.MANAGER)
+    user_role = UserRoleRepository.find_by_user_profile_id(user_profile.id)
+    user_role.role = AppRoles.COM_ADMIN
     BaseRepository.add(user_role)
 
 
