@@ -31,7 +31,7 @@ setup-db-data-via-k8s-job = { depends-on = [
 ]}
 
 [feature.db.tasks.build-docker-image-for-api-service]
-cmd = "docker build -t pdc/populate_db:1.0 -f deployment/docker/populate_db.Dockerfile ."
+cmd = "docker build -t pdc/populate_db:1.0 -f deployment/docker/populate_db_dev.Dockerfile ."
 
 [feature.db.tasks.import-docker-image-in-k8s-cluster]
 cmd = "k3d image import pdc/populate_db:1.0 -c pdc-cluster"
