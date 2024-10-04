@@ -15,7 +15,7 @@ ENV JWT_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm
 
 
 # Install any necessary dependencies
-RUN pip install --no-cache-dir --index-url https://pypi.org/simple/ --extra-index-url https://test.pypi.org/simple support_sphere_py
+RUN pip install --no-cache-dir --extra-index-url https://test.pypi.org/simple support_sphere_py
 
 # Command to run the Python script
 ENTRYPOINT ["sh", "-c", "python3 -m support_sphere.tests.resources.scripts.role_based_access_control && python3 -m support_sphere.tests.resources.scripts.update_db_sample_data"]
