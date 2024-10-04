@@ -3,6 +3,10 @@ FROM python:3.12-slim
 # Set the working directory inside the container
 WORKDIR /app
 
+# Copy the Python script and requirements file into the container
+COPY ../../src/support_sphere_py /app/support_sphere_py
+
+
 # Below ENV values are overridden when running the via K8s Job else the above arg values are used.
 ENV DB_HOST=localhost
 ENV DB_PORT=5432
@@ -15,7 +19,7 @@ ENV JWT_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm
 
 
 # Install any necessary dependencies
-RUN pip install --no-cache-dir support_sphere_py
+RUN pip install --no-cache-dir ./support_sphere_py
 
 # Command to run the Python script
-ENTRYPOINT ["sh", "-c", "python3 -m support_sphere.tests.resources.scripts.role_based_access_control && python3 -m support_sphere.tests.resources.scripts.update_db_sample_data"]
+ENTRYPOINT ["sh", "-c", "python3 ./support_sphere_py/tests/resources/scripts/role_based_access_control.py && python3 ./support_sphere_py/tests/resources/scripts/update_db_sample_data.py"]
