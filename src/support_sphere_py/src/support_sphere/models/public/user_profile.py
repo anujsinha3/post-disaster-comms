@@ -15,8 +15,6 @@ class UserProfile(BasePublicSchemaModel, table=True):
     ----------
     id : uuid.UUID
         The unique identifier for the user profile, which references the id from the `auth.users` table.
-    username : str
-        A unique username for the user profile.
     user : User
         A relationship to the `User` model (from the `auth.users` table), with back_populates set
         to "user_profile", establishing a one-to-one connection between UserProfile and User.
@@ -43,7 +41,6 @@ class UserProfile(BasePublicSchemaModel, table=True):
     __tablename__ = "user_profiles"
 
     id: uuid.UUID = Field(primary_key=True, foreign_key="auth.users.id")
-    username: str = Field(unique=True)
 
     user: User = Relationship(back_populates="user_profile")
     person_details: Optional["People"] = Relationship(back_populates="user_profile",

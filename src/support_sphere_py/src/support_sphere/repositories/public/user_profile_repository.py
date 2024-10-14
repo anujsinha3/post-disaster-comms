@@ -20,9 +20,6 @@ class UserProfileRepository(BaseRepository):
     find_by_user_id(user_id: str, fetch_user: bool = False, fetch_person_details: bool = False) -> Optional[UserProfile]:
         Finds a `UserProfile` by its user ID with optional eager loading of related `User` and `People`.
 
-    find_by_username(username: str, fetch_user: bool = False, fetch_person_details: bool = False) -> Optional[UserProfile]:
-        Finds a `UserProfile` by its username with optional eager loading of related `User` and `People`.
-
     Notes
     -----
     - The `fetch_user` flag is used to load the associated `User` model.
@@ -64,35 +61,6 @@ class UserProfileRepository(BaseRepository):
         with Session(UserProfileRepository.repository_engine) as session:
             statement = UserProfileRepository._build_search_query(fetch_user, fetch_person_details)
             statement = statement.where(UserProfile.id == user_id)
-            user_profile = session.exec(statement).one_or_none()
-
-            return user_profile
-
-    @staticmethod
-    def find_by_username(username: str,
-                         fetch_user: bool = False, fetch_person_details: bool = False) -> Optional[UserProfile]:
-        """
-        Finds a `UserProfile` by its username with optional eager loading of related `User` and `People`.
-
-        Parameters
-        ----------
-        username : str
-            The username to search for.
-        fetch_user : bool, optional
-            Whether to fetch the related `User` entity (default is False).
-        fetch_person_details : bool, optional
-            Whether to fetch the related `People` entity (default is False).
-
-        Returns
-        -------
-        Optional[UserProfile]
-            The `UserProfile` object if found, otherwise None.
-        """
-        with Session(UserProfileRepository.repository_engine) as session:
-            statement = UserProfileRepository._build_search_query(fetch_user, fetch_person_details)
-            statement = statement.where(UserProfile.username == username)
-
-            # Execute the query
             user_profile = session.exec(statement).one_or_none()
 
             return user_profile

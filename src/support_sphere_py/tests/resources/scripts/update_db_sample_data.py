@@ -39,9 +39,8 @@ def populate_user_details():
                 user: User = UserRepository.find_by_email(row['email'])
 
                 # Create a user profile
-                profile = UserProfile(username=row['username'], user=user)
-                UserProfileRepository.add(profile)
-                user_profile = UserProfileRepository.find_by_username(row['username'])
+                profile = UserProfile(user=user)
+                user_profile = UserProfileRepository.add(profile)
 
                 user_role = UserRole(user_profile=user_profile, role=AppRoles.USER)
                 BaseRepository.add(user_role)
@@ -91,8 +90,8 @@ def update_user_permissions_roles_by_cluster():
     BaseRepository.add(role_4)
     BaseRepository.add(role_5)
 
-    user_profile = UserProfileRepository.find_by_username('adamabacus')
-    user_role = UserRoleRepository.find_by_user_profile_id(user_profile.id)
+    user = UserRepository.find_by_email('adam.abacus@example.com')
+    user_role = UserRoleRepository.find_by_user_profile_id(user.id)
     user_role.role = AppRoles.SUBCOM_AGENT
     BaseRepository.add(user_role)
 
@@ -100,8 +99,8 @@ def update_user_permissions_roles_by_cluster():
     cluster_role = UserCaptainCluster(cluster=all_clusters[-1], user_role=user_role)
     BaseRepository.add(cluster_role)
 
-    user_profile = UserProfileRepository.find_by_username('bethbodmas')
-    user_role = UserRoleRepository.find_by_user_profile_id(user_profile.id)
+    user = UserRepository.find_by_email('beth.bodmas@example.com')
+    user_role = UserRoleRepository.find_by_user_profile_id(user.id)
     user_role.role = AppRoles.COM_ADMIN
     BaseRepository.add(user_role)
 
@@ -110,19 +109,19 @@ def test_app_mode_status_update():
     response_sign_in = supabase_client.auth.sign_in_with_password(
         {"email": "beth.bodmas@example.com", "password": "bethbodmas"})
 
-    user_profile = UserProfileRepository.find_by_username('bethbodmas')
+    user = UserRepository.find_by_email('beth.bodmas@example.com')
     supabase_client.table("operational_events").insert({"id": str(uuid.uuid4()),
-                                                        "created_by": str(user_profile.id),
+                                                        "created_by": str(user.id),
                                                         "created_at": datetime.datetime.now().isoformat(),
                                                         "status": OperationalStatus.EMERGENCY.name}).execute()
 
     supabase_client.table("operational_events").insert({"id": str(uuid.uuid4()),
-                                                        "created_by": str(user_profile.id),
+                                                        "created_by": str(user.id),
                                                         "created_at": datetime.datetime.now().isoformat(),
                                                         "status": OperationalStatus.TEST.name}).execute()
 
     supabase_client.table("operational_events").insert({"id": str(uuid.uuid4()),
-                                                        "created_by": str(user_profile.id),
+                                                        "created_by": str(user.id),
                                                         "created_at": datetime.datetime.now().isoformat(),
                                                         "status": OperationalStatus.NORMAL.name}).execute()
     supabase_client.auth.sign_out()
@@ -132,9 +131,9 @@ def test_unauthorized_app_mode_update():
     try:
         response_sign_in = supabase_client.auth.sign_in_with_password(
             {"email": "adam.abacus@example.com", "password": "adamabacus"})
-        user_profile = UserProfileRepository.find_by_username('adamabacus')
+        user = UserRepository.find_by_email('adam.abacus@example.com')
         supabase_client.table("operational_events").insert({"id": str(uuid.uuid4()),
-                                                            "created_by": str(user_profile.id),
+                                                            "created_by": str(user.id),
                                                             "created_at": datetime.datetime.now().isoformat(),
                                                             "status": OperationalStatus.EMERGENCY.name}).execute()
     except Exception as ex:
