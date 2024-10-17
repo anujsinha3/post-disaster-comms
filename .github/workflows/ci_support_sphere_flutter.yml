@@ -23,6 +23,9 @@ jobs:
 
       - run: flutter pub get
 
+      # build_runner required when mocking classes for testing
+      - run: flutter pub run build_runner build
+
       # Run Flutter tests
       - name: Run Unit tests
         run: flutter test ./test/unit_tests
