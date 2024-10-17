@@ -2,6 +2,13 @@ name: Frontend CI
 
 on:
   pull_request:
+    paths:
+      - 'src/support_sphere/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/support_sphere/**'
 
 jobs:
   run_tests:
