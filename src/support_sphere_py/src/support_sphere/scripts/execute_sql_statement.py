@@ -109,7 +109,6 @@ COMMIT;
 
 
 # Execute the SQL commands
-@execute_sql_app.command(help="CLI command to execute custom SQL statement passed as `sql_text` argument in multi-line string")
 def run_custom_sql_statement(
         sql_text: Annotated[
         str,

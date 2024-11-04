@@ -62,7 +62,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/99/f6/af0d1f58f86002be0cf1e2665cdd6f7a4a71cdc8a7a9438cdc9e3b5375fe/fastapi-0.115.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2a/e5/db6d438da759efbb488c4f3fbdab7764492ff3c3f953132efa6b9f0e9e53/h2-4.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d5/34/e8b383f35b77c402d28563d2b8f83159319b509bc5f760b15d60b0abf165/hpack-4.0.0-py3-none-any.whl
@@ -150,7 +150,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/99/f6/af0d1f58f86002be0cf1e2665cdd6f7a4a71cdc8a7a9438cdc9e3b5375fe/fastapi-0.115.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2a/e5/db6d438da759efbb488c4f3fbdab7764492ff3c3f953132efa6b9f0e9e53/h2-4.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d5/34/e8b383f35b77c402d28563d2b8f83159319b509bc5f760b15d60b0abf165/hpack-4.0.0-py3-none-any.whl
@@ -238,7 +238,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/99/f6/af0d1f58f86002be0cf1e2665cdd6f7a4a71cdc8a7a9438cdc9e3b5375fe/fastapi-0.115.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/95/04/ff642e65ad6b90db43e668d70ffb6736436c7ce41fcc549f4e9472234127/h11-0.14.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2a/e5/db6d438da759efbb488c4f3fbdab7764492ff3c3f953132efa6b9f0e9e53/h2-4.1.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d5/34/e8b383f35b77c402d28563d2b8f83159319b509bc5f760b15d60b0abf165/hpack-4.0.0-py3-none-any.whl
@@ -527,7 +527,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/99/f6/af0d1f58f86002be0cf1e2665cdd6f7a4a71cdc8a7a9438cdc9e3b5375fe/fastapi-0.115.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/af/71/ee32fd358f8a3bb199b03261f10921716990808a675d8160b5383487a317/httptools-0.6.4-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/42/d7/1ec15b46af6af88f19b8e5ffea08fa375d433c998b8a7639e76935c14f1f/markdown_it_py-3.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl
@@ -785,7 +785,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/99/f6/af0d1f58f86002be0cf1e2665cdd6f7a4a71cdc8a7a9438cdc9e3b5375fe/fastapi-0.115.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/94/a3/9fe9ad23fd35f7de6b91eeb60848986058bd8b5a5c1e256f5860a160cc3e/httptools-0.6.4-cp313-cp313-macosx_10_13_universal2.whl
       - pypi: https://files.pythonhosted.org/packages/42/d7/1ec15b46af6af88f19b8e5ffea08fa375d433c998b8a7639e76935c14f1f/markdown_it_py-3.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl
@@ -1043,7 +1043,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/99/f6/af0d1f58f86002be0cf1e2665cdd6f7a4a71cdc8a7a9438cdc9e3b5375fe/fastapi-0.115.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/24/ea/4b5011012ac925fe2f83b19d0e09cee9d324141ec7bf5e78bb2817f96513/fastapi_cli-0.0.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6e/f7/a71bbed7252af7db0746b81b83d68bd400f169e49d3726072e547774d949/GeoAlchemy2-0.15.2-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ea/d9/82d5e68bab783b632023f2fa31db20bebb4e89dfc4d2293945fd68484ee4/httptools-0.6.4-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/42/d7/1ec15b46af6af88f19b8e5ffea08fa375d433c998b8a7639e76935c14f1f/markdown_it_py-3.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl
@@ -4547,9 +4547,9 @@ packages:
   timestamp: 1728042416090
 - kind: pypi
   name: gotrue
-  version: 2.9.3
-  url: https://files.pythonhosted.org/packages/b8/89/4b1dffdf9cef64f6253875983a8aed1a6e3f6c405cc958f9f315c9846e64/gotrue-2.9.3-py3-none-any.whl
-  sha256: 9d2e9c74405d879f4828e0a7b94daf167a6e109c10ae6e5c59a0e21446f6e423
+  version: 2.10.0
+  url: https://files.pythonhosted.org/packages/03/06/dd3dfbb7722d0d8dfdce6b7c76695dfb4ea968dae4e46655f0d5310e27e1/gotrue-2.10.0-py3-none-any.whl
+  sha256: 768e58207488e5184ffbdc4351b7280d913daf97962f4e9f2cca05c80004b042
   requires_dist:
   - httpx[http2]>=0.26,<0.28
   - pydantic>=1.10,<3
@@ -12286,7 +12286,7 @@ packages:
   name: support-sphere-py
   version: 0.0.12
   path: ./src/support_sphere_py
-  sha256: 941ec41722bd31b9230a8d339d9200a39975d67c5d47ab313d1788d16c45f45f
+  sha256: 2f2c2f3f33cd4f95edc55091c542e4a9707b2023c115585862b36b8086532fdc
   requires_dist:
   - sqlmodel>=0.0.21,<0.1
   - supabase>=2.6.0,<2.7
