@@ -19,6 +19,8 @@ from support_sphere.models.enums import AppRoles, AppPermissions, OperationalSta
 
 import logging
 
+DATA_DIRECTORY = Path(__file__).parent / 'resources' / 'data'
+
 logger = logging.getLogger(__name__)
 
 db_init_app = typer.Typer()
@@ -51,7 +53,7 @@ def populate_resources(cv_only=False, resource_type_uids: dict[str, uuid.UUID] |
         if not isinstance(resource_type_uids, dict):
             raise ValueError("resource_type_uids must be provided if cv_only is False")
 
-    file_path = Path(__file__).parent / 'resources' / 'data' / 'resources.csv'
+    file_path = DATA_DIRECTORY / 'resources.csv'
     with file_path.open(mode='r', newline='') as file:
         csv_reader = csv.DictReader(file)
 
@@ -79,7 +81,7 @@ def populate_user_details():
 
     all_households = BaseRepository.select_all(Household)
 
-    file_path = Path(__file__).parent / 'resources' / 'data' / 'sample_data.csv'
+    file_path = DATA_DIRECTORY / 'sample_data.csv'
     with file_path.open(mode='r', newline='') as file:
         csv_reader = csv.DictReader(file)
 
@@ -145,13 +147,13 @@ def generate_signup_codes(household_id: uuid.UUID):
         break
 
 
-@db_init_app.command(help="opulate clusters and households based on household data container cluster name and address")
+@db_init_app.command(help="Populate clusters and households based on household data container cluster name and address")
 def populate_real_cluster_and_household():
     """
     Populate clusters and households based on household data container cluster name and address.
     During the creation of household, random signup code is also generated using uuid.
     """
-    household_data = Path(__file__).parent / 'resources' / 'data' / 'households.csv'
+    household_data = DATA_DIRECTORY / 'households.csv'
     with household_data.open(mode='r', newline='') as file:
         csv_reader = csv.DictReader(file)
 
